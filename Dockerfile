@@ -5,7 +5,7 @@ ENV GOPATH /go
 
 COPY docker-entrypoint.sh /sbin/docker-entrypoint.sh
 
-RUN apt-get update && apt-get -y dist-upgrade && apt-get install -y curl unzip && \
+RUN apt-get update && apt-get -y dist-upgrade && apt-get install -y curl unzip git && \
   mkdir -p /tmp/consul /ui /etc/consul.d /usr/local/sbin/ /usr/local/entrypoint.d && \
   curl -fgL -o consul.zip https://dl.bintray.com/mitchellh/consul/0.5.2_linux_amd64.zip && \
   curl -fgL -o consul_ui.zip https://dl.bintray.com/mitchellh/consul/0.5.2_web_ui.zip && \
