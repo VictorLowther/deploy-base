@@ -17,6 +17,9 @@ while [[ $answer != *:8300* ]]; do
   echo "Waiting for consul leader: $answer"
 done
 
+# Just about everything wants an IP address.
+IP=`ip addr show eth0 | grep inet | grep -v inet6 | awk '{ print $2 }' | awk -F/ '{ print $1 }'`
+
 # Now that consul is up, run whatever commands we want the system to run.
 for cmd in /usr/local/entrypoint.d/*.sh; do
     [[ -x $cmd ]] || continue
